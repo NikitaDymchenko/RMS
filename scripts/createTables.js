@@ -1,5 +1,7 @@
-#!/usr/bin/env node
-import 'dotenv/config';
+
+// гарантируем, что в процессе будет вызван dotenv.config()
+import '../src/config/config.js';
+
 import { createTables } from '../src/loader/tableCreator.js';
 import { logInfo, logError } from '../src/utils/logging.js';
 
