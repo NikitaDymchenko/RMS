@@ -8,13 +8,13 @@ import { startWorker } from './worker/worker.js';
 
 (async () => {
   logInfo('Service starting...');
-  sendWebhook({ text: '🚀 Service starting' });
+  sendWebhook({ text: 'Service starting' });
 
   // 0) Ensure all replica tables exist
   logInfo('Creating replica tables...');
   await createTables();
   logInfo('Replica tables ensured');
-  sendWebhook({ text: '✅ Replica tables ensured' });
+  sendWebhook({ text: 'Replica tables ensured' });
 
   // 1) Full initial sync of call statuses
   logInfo('Running initial sync of call statuses...');
