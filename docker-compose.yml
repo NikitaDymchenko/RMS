@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  rms:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rms_service
+    restart: on-failure
+    # Берём все ваши переменные из .env (LIVEDIGITAL_CH_HOST, MONGO_HOST, SYNC_INTERVAL_MS и т.д.)
+    env_file:
+      - ./.env
+    # Если сервис сам слушает какой-то порт (например для healthcheck или админки), пробросьте его
+    # ports:
+    #   - '3000:3000'
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    working_dir: /app
+    command: npm install && npm start
+    # Ждём, что внешние БД уже доступны, так что depends_on не нужен
+
+# Не создаём локальные БД — используем внешние инстансы
