@@ -19,7 +19,7 @@ export async function schemaMonitor() {
     if (!fs.existsSync(EXPECTED_PATH)) {
       fs.writeFileSync(EXPECTED_PATH, JSON.stringify(current, null, 2));
       logInfo('Initialized expectedSchema.json');
-      await sendWebhook({ text: '📄 Created expectedSchema.json for schema monitoring.' });
+      await sendWebhook({ text: 'Created expectedSchema.json for schema monitoring.' });
       return;
     }
     expected = JSON.parse(fs.readFileSync(EXPECTED_PATH, 'utf-8'));
@@ -33,7 +33,7 @@ export async function schemaMonitor() {
       if (added.length) lines.push(`➕ Added: ${added.join(', ')}`);
       if (removed.length) lines.push(`➖ Removed: ${removed.join(', ')}`);
       if (changed.length) lines.push(`♻️ Changed: ${changed.map(k => `${k}(${expected[k]}→${current[k]})`).join(', ')}`);
-      lines.push('⛔ Ignore until expectedSchema.json is updated.');
+      lines.push('Ignore until expectedSchema.json is updated.');
       const msg = lines.join('\n');
       await sendWebhook({ text: msg });
       logInfo(msg);
