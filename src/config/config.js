@@ -4,6 +4,8 @@ import { createClient } from '@clickhouse/client';
 
 dotenv.config();
 
+export const VERBOSE = process.env.VERBOSE_LOGGING === 'true';
+
 export const {
   MONGO_HOST,
   MONGO_DB,
