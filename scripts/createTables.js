@@ -1,4 +1,4 @@
-import 'dotenv/config';                      // подгрузка .env
+import 'dotenv/config';
 import { createTables } from '../src/loader/tableCreator.js';
 import { logInfo, logError } from '../src/utils/logging.js';
 

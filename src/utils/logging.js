@@ -7,9 +7,10 @@ export function logInfo(msg) {
 
 export function logError(msg, err) {
   console.error(`[ERROR] ${msg}`, err);
-  slackWebhook({ text: `❌ ${msg}: ${err.message||err}` });
+  slackWebhook({ text: `❌ ${msg}: ${err.message || err}` });
 }
 
+// Новый debug-логгер, пишет только если VERBOSE=true
 export function logDebug(msg) {
   if (VERBOSE) console.debug(`[DEBUG] ${msg}`);
 }
